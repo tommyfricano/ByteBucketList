@@ -1,26 +1,23 @@
 import React from "react";
-import {  Link } from "react-router-dom";
+import {  Link, useMatch, useResolvedPath } from "react-router-dom";
+import logo from "./imgs/bytesbucklist.png";
 import "./Navbar.css";
 
 const Navbar = () => {
 
   return (
     <div className="nav">
+        <CustomLink to="/"><img src={logo} alt="Logo"></img></CustomLink>
+        <p className="title">Byte's BucketList</p>
         <ul>
             <li>
-                <a>logo</a>
+                <CustomLink to="/addfriend">Add Friend</CustomLink>
             </li>
             <li>
-                <a>Byte's BucketList</a>
+                <CustomLink to="/account">Account</CustomLink>
             </li>
             <li>
-                <a href="/addfriend">Add Friend</a>
-            </li>
-            <li>
-                <a>Username:points</a>
-            </li>
-            <li>
-                <a href="/signout">signout</a>
+                <CustomLink to="/signin">Sign In</CustomLink>
             </li>
         </ul>
     </div>
@@ -28,3 +25,15 @@ const Navbar = () => {
 }
 
 export default Navbar;
+
+function CustomLink({to, children, ...props}) {
+    const resolvedPath = useResolvedPath(to);
+    const isActive = useMatch({path: resolvedPath.pathname, end: true});
+    return (
+        <li className={isActive ? "active" : ""}> 
+            <Link to={to} {...props}>
+                {children}
+            </Link>
+        </li>
+    );
+}

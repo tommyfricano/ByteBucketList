@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+body{ 
+    margin: 0;
+}
+
 .nav {
     background-color: blue;
     color: white;
@@ -9,8 +13,41 @@
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
+    padding: 0 1rem;
 }
 
-.nav li {
+.nav img{
+    margin-top: .5%;
+    margin-left: 1%;
+    width:70px;
+    height: 100px;
+}
+
+.title{
+    font-size: 35px;
+}
+
+.nav ul{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+    font-size: 16px;
+}
+
+.nav a {
+    color: inherit;
     text-decoration: none;
+    height: 95%;
+    display: flex;
+    align-items: center;
+    padding: .8rem;
+    font-size: 20px;
+    /* margin-right: 2rem; */
+}
+
+.nav li:hover { 
+    background-color: aqua;
+    border-radius: 8%;
 }
