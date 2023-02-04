@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Retrieve</title>
+{% endblock title %}
+
+{% block content %}
+    <h1 style="text-align: center; padding-top: 1em; padding-bottom: 1em;">Retrieve User Information</h1>
+
+    <form action="" method="GET">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-success">
+    </form>
+    <div class="main"> 
+
+    {% for data in dataset %}. 
+
+    {{ data.title }}< br/> 
+    {{ data.description }}< br/> 
+    <hr/> 
+
+    {% endfor %} 
+
+< /div>
+{% endblock content %}

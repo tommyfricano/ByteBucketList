@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>User List</title>
+{% endblock title %}
+
+{% block content %}
+    <h1 style="text-align: center; padding-top: 1em; padding-bottom: 1em;">Users Information</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">UserName</th>
+                <th scope="col">Latitude</th>
+                <th scope="col">Longitude</th>
+                <th scope="col">Points</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <th scope="row">{{ user.userName }}</th>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.latitude }}</td>
+                    <td>{{ user.longitude }}</td>
+                    <td>{{ user.points }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="text-center">
+        <a href="{% url 'create-user' %}"><button type="button" class="btn btn-primary">Add New Info</button></a>
+    </div>
+{% endblock content %}
