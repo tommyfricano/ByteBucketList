@@ -1,8 +1,9 @@
 import React from "react"
+import LeaderboardList from "./leaderboard/LeaderBoardList";
 
 const Home = () => {
     return(
-        <h1> Home </h1>
+        <LeaderboardList />
     );
 }
 
