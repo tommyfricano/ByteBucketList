@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+}
+
+.nav {
+    background-color: blue;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav li {
+    text-decoration: none;
+}
