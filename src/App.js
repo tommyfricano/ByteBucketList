@@ -5,7 +5,7 @@ import AddFriend from './components/addFriend/AddFriend';
 import Account from './components/account/Account';
 import Home from './components/home/Home';
 import { Route, Routes } from 'react-router-dom';
-import Login from './components/Login/Login';
+import Login from './components/login/Login';
 
 function App() {
       return (

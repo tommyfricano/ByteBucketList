@@ -7,7 +7,7 @@ body{
 }
 
 .nav {
-    background-color: blue;
+    background-color: #3b7e52;
     color: white;
     display: flex;
     justify-content: space-between;
@@ -48,6 +48,6 @@ body{
 }
 
 .nav li:hover { 
-    background-color: aqua;
+    background-color: rgb(111, 174, 145);
     border-radius: 8%;
 }

@@ -1,4 +1,5 @@
 import React, {useState} from "react"
+import "./Login.css"
 
 const LoginForm = (props) => {
     const [user, setUser] = useState("");
@@ -11,14 +12,15 @@ const LoginForm = (props) => {
 
     return(
         <div className="auth-form">
-            <form onSubmit={handleSubmit}>
-                <label for="Username">Username</label>
+            <h2>Login</h2>
+            <form className="login-form" onSubmit={handleSubmit}>
+                <label htmlFor="Username">Username</label>
                 <input value={user} onChange={(e) => setUser(e.target.value)} type="text" placeholder="ex: johndoe32" id="Username" name="Username" />
-                <label for="Password">Password</label>
+                <label htmlFor="Password">Password</label>
                 <input value={password} onChange={(e) => setPassword(e.target.value)} type="text" id="Password" name="Password" placeholder="******" />
                 <button type="submit">Login</button>
-                <button onClick={() => props.onFormSwitch('Login')}>Already have an account? Login here</button>
             </form>
+            <button className="link-button" onClick={() => props.onFormSwitch("Register")}>Don't have an account? Register here</button>
         </div>
     );
 }
