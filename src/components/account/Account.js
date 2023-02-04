@@ -1,45 +1,42 @@
-import React, { Fragment} from "react"
+import React, { Fragment, useState} from "react"
 import logo from "./guy.jpg";
-
-//import { Link } from 'react-router-dom'
-//import { userSelector } from 'react-redux'
-
-//import Loader from '../layout/Loader'
-//import MetaData from '../layout/MetaData' 
-
+import Data from "./data.json";
+import "./Account.css";
 
 const Account = () => {
-
-    //const { user, loading } = userSelector(state => state.auth)
     return(
-
-        <Fragment>
-                <Fragment>
-                    <h2 className="mt-5 ml-5">My Profile</h2>
-                    <div className="row justify-content-around mt-5 user-info">
-                        <div className="col-12 col-md-3">
-                            <figure className='avatar avatar-profile'>
-                                <img class="rounded-circle img-fluid" src={logo} alt='basic profile pic' />
-                            </figure>
+        <div className = "Account">
+            <div className="posts">
+                { Data.map(post => { 
+                    return(
+                        <center>
+                        <div>
+                        <div className="data-box">
+                        <div className="data-box-header">Account Information:</div>
+                        <div className="data-box-item">
+                        <div className="data-box-item-label">Username:</div>
+                        <div className="data-box-item-value">{post.username}</div>
                         </div>
-                
-                        <div className="col-12 col-md-5">
-                            <h4>Username</h4>
-                            <p>username</p>
-                
-                            <h4>Password</h4>
-                            <p>Password</p>
-
-                            <h4>Current Location</h4>
-                            <p>Tifton, Ga</p>
+                        <div className="data-box-item">
+                        <div className="data-box-item-label">Current Password:</div>
+                        <div className="data-box-item-value">{post.password}</div>
                         </div>
-                    </div>
-                </Fragment>
-        </Fragment>
-            
-
-
-    )
+                        <div className="data-box-item">
+                        <div className="data-box-item-label">current Location:</div>
+                        <div className="data-box-item-value">{post.currentLocation}</div>
+                        </div>
+                        <div className="data-box-item">
+                        <div className="data-box-item-label">Total Points:</div>
+                        <div className="data-box-item-value">{post.totalPoints}</div>
+                        </div>
+                        </div>
+                        </div>
+                        </center>
+                    )
+                })}
+            </div>
+        </div>
+    );
 }
 
 export default Account;

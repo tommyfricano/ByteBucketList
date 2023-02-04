@@ -1,11 +1,11 @@
 import './App.css';
 import Navbar from './components/navbar/Navbar.js';
-import React from 'react';
-import RegistrationForm from './components/registration/RegistrationForm';
+import React, {useState} from 'react';
 import AddFriend from './components/addFriend/AddFriend';
 import Account from './components/account/Account';
 import Home from './components/home/Home';
 import { Route, Routes } from 'react-router-dom';
+import Login from './components/Login/Login';
 
 
 function App() {
@@ -17,7 +17,7 @@ function App() {
           <Route path="/" element={<Home/>} />
           <Route path="/addfriend" element={<AddFriend/>} />
           <Route path="/account" element={<Account/>} />
-          <Route path="/signin" element={<RegistrationForm/>} />
+          <Route path="/signin" element={<Login/>} />
         </Routes>
       </div>
       </>
