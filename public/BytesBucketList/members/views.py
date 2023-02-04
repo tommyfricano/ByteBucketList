@@ -1,31 +1,43 @@
-from django.shortcuts import render, redirect, get_object_or_404
-from .models import User
-from .forms import UserForm
+from django.http import JsonResponse
+from members.serializers import UserSerializer
+from members.models import User
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
 
-def user_list(request):
-    users = User.objects.all()
-    context = {
-        'users': users,
-    }
-    return render(request, 'list.html', context)
+@api_view(['GET', 'POST'])
+def user_list(request, format=None):
 
+    if request.method == 'GET':
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data)
 
-def create_user(request):
-    form = UserForm()
     if request.method == 'POST':
-        form = UserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('users-list')
+        serializer = UserSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
 
-    context = {
-        'form': form,
-    }
-    return render(request, 'create.html', context)
+@api_view(['GET', 'PUT', 'DELETE'])
+def user_detail(request, id, format=None):
 
-def retrieve(request):
+    try:
+        user = User.objects.get(pk=id)
+    except User.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
-    context = {}
-    context["dataset"] = User.objects.all()
-    return render(request, 'retrieve.html', context)
+    if request.method == 'GET':
+        serializer = UserSerializer(user)
+        return Response(serializer.data)
 
+    elif request.method == 'PUT':
+        serializer = UserSerializer(user, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        user.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

@@ -14,9 +14,14 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import include, path
+from django.urls import path
+from members import views
+from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
-    path('', include('members.urls')),
     path('admin/', admin.site.urls),
+    path('members/', views.user_list),
+    path('members/<int:id>', views.user_detail)
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
