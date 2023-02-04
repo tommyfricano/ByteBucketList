@@ -6,7 +6,6 @@ import Account from './components/account/Account';
 import Home from './components/home/Home';
 import { Route, Routes } from 'react-router-dom';
 import Login from './components/login/Login';
-import LeaderboardList from './components/home/leaderboard/LeaderBoardList';
 
 
 function App() {
