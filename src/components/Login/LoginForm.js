@@ -1,9 +1,8 @@
 import React, {useState} from "react"
 
-const RegistrationForm = (props) => {
+const LoginForm = (props) => {
     const [user, setUser] = useState("");
     const [password, setPassword] = useState("");
-    const [location, setLocation] = useState("");
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -13,15 +12,15 @@ const RegistrationForm = (props) => {
     return(
         <div className="auth-form">
             <form onSubmit={handleSubmit}>
-                <label htmlFor="Username">Username</label>
+                <label for="Username">Username</label>
                 <input value={user} onChange={(e) => setUser(e.target.value)} type="text" placeholder="ex: johndoe32" id="Username" name="Username" />
-                <label htmlFor="Password">Password</label>
+                <label for="Password">Password</label>
                 <input value={password} onChange={(e) => setPassword(e.target.value)} type="text" id="Password" name="Password" placeholder="******" />
-                <button type="submit">Register</button>
-                <button onClick={() => props.onFormSwitch("Register")}>Register</button>
+                <button type="submit">Login</button>
+                <button onClick={() => props.onFormSwitch('Login')}>Already have an account? Login here</button>
             </form>
         </div>
     );
 }
 
-export default RegistrationForm;
+export default LoginForm;
