@@ -1,52 +1,59 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, setState } from 'react';
 import './LeaderBoardStyle.css'
-// import axios from 'axios';
+import update from "./imgs/refresh.png"
 
 const List = ({ children }) => (
   <div>{children}</div>
 );
 
-const ListItem = ({ rank, username, score }) => (
+const ListItem = ({ rank, username, points }) => (
   <div className='grid'>
     <div className='grid-item-user-rank'>{rank}</div>
     <div className='grid-item'>{username}</div>
-    <div className='grid-item'>{score}</div>
+    <div className='grid-item'>{points}</div>
   </div>
 );
 
 const LeaderboardList = () => {
-  const [users, setUsers] = useState([{
-    id: 1,
-    username: 'user1',
-    score: 100
-  },{
-    id: 2,
-    username: 'user2',
-    score: 95
-  },
-  {
-    id: 3,
-    username: 'user3',
-    score: 85
-  },{
-    id: 4,
-    username: 'user4',
-    score: 75
-  },
-  {
-    id: 5,
-    username: 'user5',
-    score: 65
-  }]);
+  const [users, setUsers] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(null);
+  const [refresh, setRefresh] = useState();
+  let num = 0;
 
-  // useEffect(() => {
-  //   axios.get('/api/leaderboard')
-  //     .then(response => setUsers(response.data))
-  //     .catch(error => console.error(error));
-  // }, []);
+  useEffect(() => {
+
+    const fetchBoard = async () => {
+      const response = await fetch('http://localhost:4000/api/leaderboard', {
+              method: 'GET',
+              headers: {'Content-Type': 'application/json'}
+          })
+          const json = await response.json() 
+          console.log(json);
+          setUsers(json);
+          
+          console.log(response);
+          console.log(response.body);
+          if(!response.ok) {
+              setIsLoading(false)
+              setError(json.error)
+          }
+        }
+
+      fetchBoard();
+
+      }, [refresh]);
+
+  console.log(users);
+
+  const onRefresh = () => {
+    num += 1;
+    setRefresh(num);
+  }
 
   return (
     <div className='LB'>
+      <img src={update} alt="refresh button" onClick={onRefresh}></img>
       <h2>Byte&#39;s Leaderboard</h2>
       <div className='grid-title'>
         <div className='grid-item-rank'>Rank</div>
@@ -59,7 +66,7 @@ const LeaderboardList = () => {
             key={user.id}
             rank={index + 1}
             username={user.username}
-            score={user.score}
+            points={user.points}
           />
         ))}
       </List>

@@ -1,14 +1,19 @@
 import React from "react";
 import {  Link, useMatch, useResolvedPath } from "react-router-dom";
+import { useAuthContext } from "../hooks/useAuthContext";
+import { useLogout } from "../hooks/useLogout";
 import logo from "./imgs/bytesbucklist.png";
+import title from "./imgs/bytesbucketlistheader.png"
 import "./Navbar.css";
 
 const Navbar = () => {
+    const {user} = useAuthContext();
+    const {logout} = useLogout();
 
   return (
     <div className="nav">
         <CustomLink to="/"><img src={logo} alt="Logo"></img></CustomLink>
-        <p className="title">Byte's BucketList</p>
+        <img className="title" src={title} alt="Byte's BucketList"></img>
         <ul>
             <li>
                 <CustomLink to="/addfriend">Add Friend</CustomLink>
@@ -16,12 +21,20 @@ const Navbar = () => {
             <li>
                 <CustomLink to="/account">Account</CustomLink>
             </li>
-            <li>
-                <CustomLink to="/signin">Sign In</CustomLink>
-            </li>
+            {!user && (
+                <li>
+                    <CustomLink to="/signin">Sign In</CustomLink>
+                </li>
+            )}
+            {user && (
+                <li>
+                    <button onClick={() => logout()}>Sign out</button>
+                </li>
+            )}
         </ul>
     </div>
-    );
+  );
+    
 }
 
 export default Navbar;

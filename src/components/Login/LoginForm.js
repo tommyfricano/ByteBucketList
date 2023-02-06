@@ -1,13 +1,20 @@
 import React, {useState} from "react"
+import { useNavigate } from "react-router-dom";
+import {useLogin} from "../hooks/useLogin";
 import "./Login.css"
 
 const LoginForm = (props) => {
-    const [user, setUser] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const {login, error, isLoading} = useLogin();
+    const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
+        await login(username, password);
+
+        navigate("/");
     }
 
     return(
@@ -15,9 +22,9 @@ const LoginForm = (props) => {
             <h2>Login</h2>
             <form className="login-form" onSubmit={handleSubmit}>
                 <label htmlFor="Username">Username</label>
-                <input value={user} onChange={(e) => setUser(e.target.value)} type="text" placeholder="ex: johndoe32" id="Username" name="Username" />
+                <input value={username} onChange={(e) => setUsername(e.target.value)} type="text" placeholder="ex: johndoe32" id="Username" name="Username" />
                 <label htmlFor="Password">Password</label>
-                <input value={password} onChange={(e) => setPassword(e.target.value)} type="text" id="Password" name="Password" placeholder="******" />
+                <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" id="Password" name="Password" placeholder="***********" />
                 <button type="submit">Login</button>
             </form>
             <button className="link-button" onClick={() => props.onFormSwitch("Register")}>Don't have an account? Register here</button>

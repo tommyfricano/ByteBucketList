@@ -14,16 +14,19 @@ body{
     align-items: center;
     gap: 2rem;
     padding: 0 1rem;
+    list-style: none;
 }
 
 .nav img{
     margin-left: 1%;
-    width: 120px;
-    height: 120px;
+    width: 90px;
+    height: 90px;
 }
 
-.title{
-    font-size: 35px;
+.nav .title {
+    width: 500px;
+    height: 100px;
+    padding-left: 8%;
 }
 
 .nav ul{
@@ -49,4 +52,5 @@ body{
 .nav li:hover { 
     background-color: rgb(111, 174, 145);
     border-radius: 8%;
+    list-style: none;
 }

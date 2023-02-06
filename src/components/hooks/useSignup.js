@@ -12,16 +12,18 @@ export const useSignup = () =>{
         setIsLoading(true) //we setting true because we just starting the request
         setError(null)
 
+        let points = 0 * 1;
         //here is where we make the post request
-        const response = await fetch('/members', {
+        const response = await fetch('http://localhost:4000/api/user/signup', {
             method: 'POST',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({username, password, latitude, longitude}) //we are passing email and password in JSON format
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({username, password, latitude, longitude, points}) 
         })
 
         //return us a respone json web token if success else error message
         const json = await response.json() 
 
+        console.log(response.body);
         //if the resonse failed, we returned error
         if(!response.ok){
             setIsLoading(false)

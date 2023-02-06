@@ -1,14 +1,25 @@
 .LB{
+    display: flexbox;
     background-color: #FFFACA;
-    width: 50%;
-    height: 500px;
+    width: 45%;
+    height: 60%;
     margin: 1rem;
+    border: 1px solid black;
 }
 
 h2{
     /* width: 48%; */
     font-size: 40px;
-    padding-top: 15px;
+    margin-top: -5px;
+}
+
+.LB img {
+    width:20px;
+    height:20px;
+    margin-top: 7px;
+    margin-left: 95%;
+    margin-bottom: 0px;
+    cursor: pointer;
 }
 
 .grid{

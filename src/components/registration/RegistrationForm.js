@@ -4,28 +4,43 @@ import '../login/Login.css';
 import { useSignup } from "../hooks/useSignup";
 
 const RegistrationForm = (props) => {
-    const [user, setUser] = useState("");
+    const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [lat, setLat] = useState([]);
     const [long, setLong] = useState([]);
     const {signup, error, isLoading} = useSignup();
+    const [pause, setPause] = useState(false);
 
+    const navigate = useNavigate();
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        await signup(user, password,lat,long);
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+         await sleep(200);
+        } else {
+        console.log("Geolocation is not supported by this browser.");
+        }
 
-        setUser("");
-        setPassword("");
-        setLat("");
-        setLong("");
-        Navigate("/");
+        console.log(username +" "+ password + " "+lat + " "+long );
+
+        await signup(username,password,lat,long);
+
+        if( !isLoading ){
+          setUsername("");
+          setPassword("");
+          setLat("");
+          setLong("");
+          navigate("/");
+        }
     }
 
+    const sleep = (delay) => new Promise(resolve => setTimeout(resolve, delay));
 
-    const getLocation = () => {
+    const getLocation = async () => {
             if (navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(showPosition);
+                 navigator.geolocation.getCurrentPosition(showPosition);
+                await sleep(200);
             } else {
               console.log("Geolocation is not supported by this browser.");
             }
@@ -36,7 +51,7 @@ const RegistrationForm = (props) => {
         " Longitude: " + position.coords.longitude);
         setLat(position.coords.latitude);
         setLong(position.coords.longitude);
-        console.log(lat + " " + long);
+        setPause(false);
       }
 
     return(
@@ -44,12 +59,12 @@ const RegistrationForm = (props) => {
             <h2>Register</h2>
             <form className="registration-form" onSubmit={handleSubmit}>
                 <label htmlFor="Username">Username</label>
-                <input required value={user} onChange={(e) => setUser(e.target.value)} type="text" placeholder="ex: johndoe32" id="Username" name="Username" />
+                <input required value={username} onChange={(e) => setUsername(e.target.value)} type="text" placeholder="ex: johndoe32" id="Username" name="Username" />
                 <label htmlFor="Password">Password</label>
-                <input required value={password} onChange={(e) => setPassword(e.target.value)} type="text" id="Password" name="Password" placeholder="******" />
+                <input required value={password} onChange={(e) => setPassword(e.target.value)} type="password" id="Password" name="Password" placeholder="************" />
                 <label htmlFor="TOS">Accept terms of service **your current location will be taken when you register**</label>
-                <input required type="checkbox" name="TOS"/>
-                <button type="submit" onClick={getLocation}>Register</button>
+                <input required onClick={() => { setPause(true); getLocation() }} type="checkbox" name="TOS"/>
+                <button type="submit" disabled={pause}>Register</button>
             </form>
             <button className="link-button" onClick={() => props.onFormSwitch("Login")}>Already have an account? Login here</button>
         </div>

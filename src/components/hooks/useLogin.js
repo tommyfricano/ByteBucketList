@@ -10,13 +10,15 @@ export const useLogin = () =>{
         setIsLoading(true)
         setError(null)
 
-        const response = await fetch('members/login', {
+        const response = await fetch('http://localhost:4000/api/user/login', {
             method: 'POST',
-            headers: {'Content-type': 'application/json'},
-            body: JSON.stringify({username: username, password: password})
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({username, password})
         })
         const json = await response.json() //return token if success else error message
 
+        console.log(response);
+        console.log(response.body);
         if(!response.ok){
             setIsLoading(false)
             setError(json.error)
