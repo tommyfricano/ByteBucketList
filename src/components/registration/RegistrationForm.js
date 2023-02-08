@@ -6,8 +6,8 @@ import { useSignup } from "../hooks/useSignup";
 const RegistrationForm = (props) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [lat, setLat] = useState([]);
-    const [long, setLong] = useState([]);
+    const [latitude, setLatitude] = useState([]);
+    const [longitude, setLongitude] = useState([]);
     const {signup, error, isLoading} = useSignup();
     const [pause, setPause] = useState(false);
 
@@ -22,15 +22,15 @@ const RegistrationForm = (props) => {
         console.log("Geolocation is not supported by this browser.");
         }
 
-        console.log(username +" "+ password + " "+lat + " "+long );
+        // console.log(username +" "+ password + " "+lat + " "+long );
 
-        await signup(username,password,lat,long);
+        await signup(username,password,latitude,longitude);
 
         if( !isLoading ){
           setUsername("");
           setPassword("");
-          setLat("");
-          setLong("");
+          setLatitude("");
+          setLongitude("");
           navigate("/");
         }
     }
@@ -49,8 +49,8 @@ const RegistrationForm = (props) => {
     function showPosition(position) {
        console.log("Latitude: " + position.coords.latitude +
         " Longitude: " + position.coords.longitude);
-        setLat(position.coords.latitude);
-        setLong(position.coords.longitude);
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
         setPause(false);
       }
 

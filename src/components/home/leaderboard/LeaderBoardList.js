@@ -18,22 +18,16 @@ const LeaderboardList = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
-  const [refresh, setRefresh] = useState();
-  let num = 0;
 
-  useEffect(() => {
-
+  const onRefresh = () => {
     const fetchBoard = async () => {
       const response = await fetch('http://localhost:4000/api/leaderboard', {
               method: 'GET',
               headers: {'Content-Type': 'application/json'}
           })
           const json = await response.json() 
-          console.log(json);
           setUsers(json);
-          
-          console.log(response);
-          console.log(response.body);
+        
           if(!response.ok) {
               setIsLoading(false)
               setError(json.error)
@@ -41,15 +35,10 @@ const LeaderboardList = () => {
         }
 
       fetchBoard();
-
-      }, [refresh]);
+    }
 
   console.log(users);
 
-  const onRefresh = () => {
-    num += 1;
-    setRefresh(num);
-  }
 
   return (
     <div className='LB'>

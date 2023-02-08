@@ -1,22 +1,23 @@
 import React from 'react';
-import GoogleMapReact from 'google-map-react';
+import {GoogleMap, Marker} from '@react-google-maps/api';
+import LocationPin from './LocationPin';
+import "./Map.css"
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const Map = (props) => {
 
-const Map = ({ center, zoom }) => (
-  <div style={{ height: '50vh', width: '50%' }}>
-    <GoogleMapReact
-      bootstrapURLKeys={{ key: 'AIzaSyCJ7lnvSMmckltWYC6r3d8UWKQiZHMBKqM' }}
-      defaultCenter={center}
-      defaultZoom={zoom}
-    >
-      <AnyReactComponent
-        lat={center.lat}
-        lng={center.lng}
-        text="My Marker"
-      />
-    </GoogleMapReact>
-  </div>
-);
+    return(
+        <div>            
+                <GoogleMap
+                    center={props.center}
+                    zoom={props.zoom}
+                    mapContainerClassName="google-map"
+                >
+                {/* <Marker position={props.center}>Current location</Marker> */}
+                <Marker position={props.center}></Marker>
+                </GoogleMap>
+        
+         </div>
+        );
+    }
 
 export default Map;
