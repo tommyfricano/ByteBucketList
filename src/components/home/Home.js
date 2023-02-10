@@ -55,10 +55,10 @@ const Home = () => {
                 <div className="item"><LeaderboardList /></div>
 
                 {user && (
-                    <div className="item"><Map onClick={location} center={location} zoom={10}/></div>
+                    <div className="item"><Map onClick={location} center={location} zoom={5} /></div>
                 )}
 
-                {!user && ( <div className="item"><Map center={{ lat: 40.5, lng: -74, }} zoom={8}/></div>)}
+                {!user && ( <div className="item"><Map center={{ lat: 37, lng: -95.5, }} zoom={4}/></div>)}
                 
             </div>
        
