@@ -16,7 +16,7 @@ const Navbar = () => {
         <img className="title" src={title} alt="Byte's BucketList"></img>
         <ul>
             <li>
-                <CustomLink to="/addfriend">Add Friend</CustomLink>
+                <CustomLink to="/addTrip">Add Trip</CustomLink>
             </li>
             <li>
                 <CustomLink to="/account">Account</CustomLink>

@@ -6,33 +6,48 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 const Map = (props) => {
     const {user} = useAuthContext();
 
-    const newYork = {
-        lat:40.7128, 
-        lng: -74.0060
-    }
+    const locations =[
+        {
+            name: "New York City",
+            coor: { lat:40.7128, lng: -74.0060 },
+            label: "Byte's #1"
+        },
 
-    const yellowStone = {
-        lat: 44.4280 , 
-        lng: -110.5885
-    }
+        {
+            name: "YellowStone Park",
+            coor: { lat: 44.4280 , lng: -110.5885 },
+            label: "Byte's #2"
+        },
 
-    const sanFran = {
-        lat: 37.7749, 
-        lng:-122.4194
-    }
-    const yosemite = {
-        lat: 37.8651, 
-        lng: -119.5383
-    }
-    const hawaii = {
-        lat: 19.8968, 
-        lng: -155.5828
-    }
+        {
+            name: "San Francisco",
+            coor: {lat: 37.7749, lng:-122.4194},
+            label: "Byte's #3"
+        },
+        {
+            name: "Yosemite Park",
+            coor: { lat: 37.8651, lng: -119.5383},
+            label: "Byte's #4"
+        },
+        {
+            name: "Hawaii",
+            coor: {lat: 19.8968, lng: -155.5828},
+            label: "Byte's #5"
+
+        },
+    ];
 
 
     return(
         <div>            
             <GoogleMap
+                    onClick={ev => {
+                        console.log("latitide = ", ev.latLng.lat());
+                        console.log("longitude = ", ev.latLng.lng());
+                        props.setLatitude(ev.latLng.lat());
+                        props.setLongitude(ev.latLng.lng());
+                        <MarkerF position={{lat: ev.latLng.lat() * 1, lng: ev.latLng.lng() * 1}} label={{text: "Destination", className: "markerLabel" }} ></MarkerF>                    
+                    }}
                     center={props.center}
                     zoom={props.zoom}
                     mapContainerClassName="google-map"
@@ -45,11 +60,9 @@ const Map = (props) => {
                               className: "markerLabel"
                               }} ></MarkerF>
             )}
-                <MarkerF position={newYork} label={{text: "Byte's #1",className: "markerLabel" }} ></MarkerF>
-                <MarkerF position={yellowStone} label={{text: "Byte's #2",className: "markerLabel"}} ></MarkerF>
-                <MarkerF position={sanFran} label={{text: "Byte's #3",className: "markerLabel"}} ></MarkerF>
-                <MarkerF position={yosemite} label={{text: "Byte's #4,",className: "markerLabel"}} ></MarkerF>
-                <MarkerF position={hawaii} label={{text: "Byte's #5",className: "markerLabel"}} ></MarkerF>
+            {locations.map((location, index) => (
+                <MarkerF position={location.coor} key={index} label={{text: location.label + ", "+location.name ,className: "markerLabel" }} ></MarkerF>
+            ))}
             </GoogleMap>
                 
         
