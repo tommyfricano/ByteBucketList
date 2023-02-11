@@ -1,10 +1,12 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import {GoogleMap, MarkerF} from '@react-google-maps/api';
 import "./Map.css"
 import { useAuthContext } from '../../hooks/useAuthContext';
 
 const Map = (props) => {
     const {user} = useAuthContext();
+    let lat=  0;
+    let lng= 0;
 
     const locations =[
         {
@@ -35,7 +37,14 @@ const Map = (props) => {
             label: "Byte's #5"
 
         },
+        {
+            name: "",
+            coor: {lat: +lat, lng: +lng },
+            label: "Destination"
+        }
     ];
+
+    let coord;
 
 
     return(
@@ -44,9 +53,11 @@ const Map = (props) => {
                     onClick={ev => {
                         console.log("latitide = ", ev.latLng.lat());
                         console.log("longitude = ", ev.latLng.lng());
-                        props.setLatitude(ev.latLng.lat());
-                        props.setLongitude(ev.latLng.lng());
-                        <MarkerF position={{lat: ev.latLng.lat() * 1, lng: ev.latLng.lng() * 1}} label={{text: "Destination", className: "markerLabel" }} ></MarkerF>                    
+                        lat = Math.round(ev.latLng.lat()*10000)/10000;
+                        lng = Math.round(ev.latLng.lng()*10000)/10000;
+                        coord = {lat: +lat, lng: +lng};
+                        props.setLatitude(lat);
+                        props.setLongitude(lng);
                     }}
                     center={props.center}
                     zoom={props.zoom}

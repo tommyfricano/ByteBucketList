@@ -7,10 +7,10 @@ const List = ({ children }) => (
 );
 
 const ListItem = ({ rank, username, points }) => (
-  <div className='grid'>
+  <div className='gridLB'>
     <div className='grid-item-user-rank'>{rank}</div>
-    <div className='grid-item'>{username}</div>
-    <div className='grid-item'>{points}</div>
+    <div className='grid-itemLB'>{username}</div>
+    <div className='grid-itemLB'>{points}</div>
   </div>
 );
 
@@ -44,7 +44,7 @@ const LeaderboardList = () => {
     <div className='LB'>
       <img src={update} alt="refresh button" onClick={onRefresh}></img>
       <h2>Byte&#39;s Leaderboard</h2>
-      <div className='grid-title'>
+      <div className='grid-titleLB'>
         <div className='grid-item-rank'>Rank</div>
         <div className='grid-item-user'>User</div>
         <div className='grid-item-points'>Points</div>

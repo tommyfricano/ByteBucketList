@@ -21,7 +21,7 @@ h2{
     cursor: pointer;
 }
 
-.grid{
+.gridLB{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 0px;
@@ -33,7 +33,7 @@ h2{
     padding: -5px;
 }
 
-.grid-title{
+.grid-titleLB{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-column-gap: 0px;
@@ -45,7 +45,7 @@ h2{
     color: white;
 }
 
-.grid-item{
+.grid-itemLB{
     place-self: center;
     font-size: 27px;
     padding: 6.5%;

@@ -12,3 +12,135 @@
     width: 25%;
     box-sizing: border-box;
   }
+  .item-trips {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  h2 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+  }
+  
+  /* Top grid */
+  .grid-container {
+      display: grid;
+      font-family: Arial, Helvetica, sans-serif;
+      grid-template-columns: 30% 17.5% 17.5% 17.5% 17.5%;
+      background-color: rgba(55, 54, 54, 0.8);
+      font-size: 1.5vw;
+      padding: 5px;
+      /* border: #1e1c1c solid 1px; */
+    }
+    
+    .grid-item {
+      border: 1px double rgba(0, 0, 0, 0.8);
+      background-color: rgba(248, 248, 248, 0.8);
+      padding: 20px;
+      font-size: 20px;
+      font-size: 1.5vw;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  
+    /* Added tasks list */
+    .grid-container-tasks {
+      display: grid;
+      grid-template-columns: 30% 17% 17% 16% 15% 3% 2%;
+      background-color: rgba(55, 54, 54, 0.8);
+      padding: 3px;
+      margin: 5px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  
+    .grid-container-tasks-button {
+      display: grid;
+      grid-template-columns: 30% 17% 17% 17% 16% 3%;
+      background-color: rgba(114, 114, 114, 0.8);
+      padding: 10px;
+      margin: 2px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  
+    .grid-item-tasks {
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 22px;
+      padding-bottom: 5px;
+      font-size: 20px;
+      font-size: 1.5vw;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  
+    .grid-item-tasks-title {
+      background-color: rgba(255, 255, 255, 0.8);
+      display: block;
+      overflow-wrap:break-word;
+      padding: 23px;
+      font-size: 20px;
+      font-size: 1.5vw;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .grid-item-tasks-status {
+      background-color: rgba(255, 255, 255, 0.8);
+      display: block;
+      overflow-wrap:break-word;
+      padding: 6% 0 0 0;
+      font-size: 20px;
+      font-size: 1.5vw;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+  
+    .grid-item-tasks-delete {
+      background-color: rgba(255, 255, 255, 0.8);
+      /* border: 1px solid rgba(0, 0, 0, 0.8); */
+      /* padding: 20px; */
+      font-size: 10px;
+      text-align: left;
+    }
+
+    .delete-btn {
+      margin-top: 23px;
+      -webkit-border-radius: 60;
+      -moz-border-radius: 60;
+      border-radius: 60px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #ffffff;
+      font-size: 15px;
+      background: #e81515;
+      padding: 2px 10px 4px 10px;
+      text-decoration: none;
+    }
+    
+    .delete-btn:hover {
+      background: #e86a6a;
+      text-decoration: none;
+    }
+  
+    .edit-button {
+      background:linear-gradient(to bottom, #44c767 5%, #5cbf2a 100%);
+      margin-top: 23px;
+      margin-right: 3%;
+      background-color:#44c767;
+      border-radius:42px;
+      border:2px solid #18ab29;
+      display:inline-block;
+      cursor:pointer;
+      color:#ffffff;
+      font-family:Arial;
+      font-size:12px;
+      padding:4px 5px;
+      text-decoration:none;
+      text-shadow:0px 1px 0px #2f6627;
+    }
+    .edit-button:hover {
+      background:linear-gradient(to bottom, #5cbf2a 5%, #44c767 100%);
+      background-color:#5cbf2a;
+    }
+    .edit-button:active {
+      position:relative;
+      top:1px;
+    }
