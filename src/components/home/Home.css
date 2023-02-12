@@ -28,7 +28,7 @@
       display: grid;
       font-family: Arial, Helvetica, sans-serif;
       grid-template-columns: 30% 17.5% 17.5% 17.5% 17.5%;
-      background-color: rgba(55, 54, 54, 0.8);
+      background-color: #3b7e52;
       font-size: 1.5vw;
       padding: 5px;
       /* border: #1e1c1c solid 1px; */
@@ -47,8 +47,9 @@
     /* Added tasks list */
     .grid-container-tasks {
       display: grid;
-      grid-template-columns: 30% 17% 17% 16% 15% 3% 2%;
-      background-color: rgba(55, 54, 54, 0.8);
+      grid-template-columns: 30% 17% 17% 16% 17% 3% ;
+      border: 10px solid #FFFACA;
+      background-color: #3b7e52;
       padding: 3px;
       margin: 5px;
       font-family: Arial, Helvetica, sans-serif;
@@ -64,7 +65,8 @@
     }
   
     .grid-item-tasks {
-      background-color: rgba(255, 255, 255, 0.8);
+      /* background-color: rgba(255, 255, 255, 0.8); */
+      color: white;
       padding: 22px;
       padding-bottom: 5px;
       font-size: 20px;
@@ -74,7 +76,8 @@
     }
   
     .grid-item-tasks-title {
-      background-color: rgba(255, 255, 255, 0.8);
+      /* background-color: rgba(255, 255, 255, 0.8); */
+      color: white;
       display: block;
       overflow-wrap:break-word;
       padding: 23px;
@@ -95,9 +98,7 @@
     }
   
     .grid-item-tasks-delete {
-      background-color: rgba(255, 255, 255, 0.8);
-      /* border: 1px solid rgba(0, 0, 0, 0.8); */
-      /* padding: 20px; */
+      background-color:  #3b7e52;
       font-size: 10px;
       text-align: left;
     }
@@ -144,3 +145,73 @@
       position:relative;
       top:1px;
     }
+
+    .addModal {
+      width: 60%;
+      text-align: center;
+      position: absolute;
+      padding: .5rem;
+      z-index: 10;
+      top: 30vh;
+      left: 20%;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .addModal form{
+      font-size: 30px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .addModal form button {
+      font: inherit;
+      font-size: large;
+      padding: .5rem;
+      cursor: pointer;
+      border-radius: 5px;
+      background-color: #3b7e52;
+      color: white;
+      border: 1px solid #3b7e52;
+      margin: 2rem 1rem;
+      cursor: pointer;
+    }
+    
+    .addModal form button:hover{
+      background-color: #6c9f7e;
+      border-color: #6aa07d;
+    }
+
+    /* Modal btns */
+.btn {
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #3b7e52;
+  color: white;
+  border: 1px solid #3b7e52;
+  margin: 2rem 1rem;
+}
+
+.btn:hover {
+  background-color: #3b7e52;
+  border-color: #3b7e52;
+}
+
+.btn--alt {
+  background-color: transparent;
+  color: #3b7e52;
+}
+
+.btn--alt:hover {
+  background-color: #f8dae9;
+}
+
+.backdrop {
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 100%;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}

@@ -13,11 +13,13 @@ const Home = () => {
     const [location, setLocation] = useState([]);
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(null);
+    const [update, setUpdate] = useState(false);
     
     
 
     useEffect(() => {
             const userLocation = async () => {
+                console.log(user);
                 const response = await fetch('http://localhost:4000/api/map/' + user.username, {
                     method: 'GET',
                     headers: {'Content-Type': 'application/json',
@@ -53,7 +55,7 @@ const Home = () => {
 
             userLocation();
             userTrips();
-        }, [])
+        }, [update])
     
             if(!isLoaded){
                 return <div>Loading...</div>;
@@ -62,13 +64,10 @@ const Home = () => {
             console.log(JSON.stringify(location));
 
     return(
-            // <div className="container">
-            //     <div className="item"><LeaderboardList /></div>
         <>
                 {user && (
                     <div className="container">
-                    <div className="item"><LeaderboardList /></div>
-                    
+                    <div className="item" onClick={() => {update ? setUpdate(false): setUpdate(true) }}><LeaderboardList /></div>
                         <div className="item"><Map onClick={location} center={location} zoom={5} /></div>
                         <div className="item-trips">
                             <div className='grid-container'>
