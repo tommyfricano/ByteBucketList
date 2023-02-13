@@ -26,8 +26,9 @@ const LoginForm = (props) => {
                 <label htmlFor="Password">Password</label>
                 <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" id="Password" name="Password" placeholder="***********" />
                 <button type="submit">Login</button>
+                <button className="link-button" onClick={() => props.onFormSwitch("Register")}>Don't have an account? Register here</button>
+
             </form>
-            <button className="link-button" onClick={() => props.onFormSwitch("Register")}>Don't have an account? Register here</button>
         </div>
     );
 }

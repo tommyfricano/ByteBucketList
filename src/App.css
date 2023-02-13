@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+body{
+  background-image: url(./components/background/topo-background.png);
+  background-color: transparent;
+}
+
 .container {
   text-align: center;
   margin: 0rem;

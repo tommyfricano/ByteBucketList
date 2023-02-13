@@ -62,11 +62,12 @@ const RegistrationForm = (props) => {
                 <input required value={username} onChange={(e) => setUsername(e.target.value)} type="text" placeholder="ex: johndoe32" id="Username" name="Username" />
                 <label htmlFor="Password">Password</label>
                 <input required value={password} onChange={(e) => setPassword(e.target.value)} type="password" id="Password" name="Password" placeholder="************" />
-                <label htmlFor="TOS">Accept terms of service **your current location will be taken when you register**</label>
+                <label htmlFor="TOS">Accept terms of service <br/>**your current location will be taken when you register**</label>
                 <input required onClick={() => { setPause(true); getLocation() }} type="checkbox" name="TOS"/>
                 <button type="submit" disabled={pause}>Register</button>
+                <button className="link-button" onClick={() => props.onFormSwitch("Login")}>Already have an account? Login here</button>
             </form>
-            <button className="link-button" onClick={() => props.onFormSwitch("Login")}>Already have an account? Login here</button>
+            
         </div>
     );
 }

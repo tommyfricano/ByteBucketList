@@ -27,8 +27,8 @@ const Map = (props) => {
             label: "Byte's #3"
         },
         {
-            name: "Yosemite Park",
-            coor: { lat: 37.8651, lng: -119.5383},
+            name: "Pikes Peak",
+            coor: { lat: 38.8409, lng: -105.0423},
             label: "Byte's #4"
         },
         {

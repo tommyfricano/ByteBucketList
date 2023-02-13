@@ -10,17 +10,17 @@ import Login from './components/login/Login';
 
 function App() {
       return (
-      <>
-      <Navbar/>
-      <div className='container'> 
-        <Routes>
-          <Route path="/" element={<Home/>} />
-          <Route path="/addTrip" element={<AddTrip/>} />
-          <Route path="/account" element={<Account/>} />
-          <Route path="/signin" element={<Login/>} />
-        </Routes>
+      <body>
+        <Navbar/>
+        <div className='container'> 
+          <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="/addTrip" element={<AddTrip/>} />
+            <Route path="/account" element={<Account/>} />
+            <Route path="/signin" element={<Login/>} />
+          </Routes>
       </div>
-      </>
+    </body>
       );
 }
 

@@ -47,7 +47,7 @@
     /* Added tasks list */
     .grid-container-tasks {
       display: grid;
-      grid-template-columns: 30% 17% 17% 16% 17% 3% ;
+      grid-template-columns: 30% 17% 17% 17% 17% 2% ;
       border: 10px solid #FFFACA;
       background-color: #3b7e52;
       padding: 3px;
@@ -157,6 +157,10 @@
       font-family: Arial, Helvetica, sans-serif;
     }
 
+    .addModal p{
+        margin: 5px;
+    }
+
     .addModal form{
       font-size: 30px;
       font-family: Arial, Helvetica, sans-serif;
@@ -171,7 +175,7 @@
       background-color: #3b7e52;
       color: white;
       border: 1px solid #3b7e52;
-      margin: 2rem 1rem;
+      margin: 1rem 1rem;
       cursor: pointer;
     }
     
@@ -214,4 +218,8 @@
   height: 100vh;
   top: 0;
   left: 0;
+}
+
+.marginTop {
+  margin-top: 2%;
 }

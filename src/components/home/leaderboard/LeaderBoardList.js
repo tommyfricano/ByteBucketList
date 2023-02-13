@@ -19,6 +19,10 @@ const LeaderboardList = () => {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(null);
 
+  useEffect(() => {
+    onRefresh();
+  }, [])
+
   const onRefresh = () => {
     const fetchBoard = async () => {
       const response = await fetch('http://localhost:4000/api/leaderboard', {

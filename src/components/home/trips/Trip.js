@@ -77,10 +77,7 @@ const Trip = props => {
                         setError(json.error)
                     }
 
-                    console.log("*****Here*******1");
-
                     const json2 = await response2.json();
-                    console.log("*****Here*******2");
                     
                     if(!response2.ok) {
                         setIsLoading(false)
@@ -92,7 +89,6 @@ const Trip = props => {
                     alert("You are not at your trip destination!");
                     // setConfirmModalOpen(false);
                 }
-                console.log("*****Here*******3");
                  setConfirmModalOpen(false);
             }
 
@@ -115,7 +111,7 @@ const Trip = props => {
                         <div className='grid-item-tasks' >{props.dstlatitude}</div>
                         <div className='grid-item-tasks' >{props.dstlongitude}</div>
                         <div className='grid-item-tasks-delete'>
-                            <button type="button" class="edit-button" onClick={confirmHandler}></button>
+                            <button type="button" class="edit-button" onClick={confirmHandler}>✓</button>
                         </div>
                         { confirmModalOpen && <ConfirmModal onCancel={closeModal} onConfirm={confirm} tripInfo={props}/>}
                         { confirmModalOpen && <BackDrop onCancel={closeModal}/> }

@@ -70,6 +70,7 @@ const Home = () => {
                     <div className="item" onClick={() => {update ? setUpdate(false): setUpdate(true) }}><LeaderboardList /></div>
                         <div className="item"><Map onClick={location} center={location} zoom={5} /></div>
                         <div className="item-trips">
+                        <div className="marginTop">
                             <div className='grid-container'>
                                 <div className='grid-item'>Trip</div>
                                 <div className='grid-item'>Status</div>
@@ -78,7 +79,7 @@ const Home = () => {
                                 <div className='grid-item'>longitude</div>
                             </div>
                         </div>
-                    
+                        
                         {trips.map(trip => {
                             return(
                             <Trip 
@@ -92,6 +93,7 @@ const Home = () => {
                             />
                             );
                         })}
+                        </div>
                     </div>
                 )}
 
